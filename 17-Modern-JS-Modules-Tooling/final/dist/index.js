@@ -7,8 +7,8 @@
 // orig method which is the require for previous bundles
 parcelRequire = (function (modules, cache, entry, globalName) {
   // Save the require from previous bundle to this closure if any
-  var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
-  var nodeRequire = typeof require === 'function' && require;
+  let previousRequire = typeof parcelRequire === 'function' && parcelRequire;
+  let nodeRequire = typeof require === 'function' && require;
 
   function newRequire(name, jumped) {
     if (!cache[name]) {
@@ -16,7 +16,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
         // if we cannot find the module within our internal map or
         // cache jump to the current global require ie. the last bundle
         // that was added to the page.
-        var currentRequire = typeof parcelRequire === 'function' && parcelRequire;
+        let currentRequire = typeof parcelRequire === 'function' && parcelRequire;
         if (!jumped && currentRequire) {
           return currentRequire(name, true);
         }
@@ -34,7 +34,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
           return nodeRequire(name);
         }
 
-        var err = new Error('Cannot find module \'' + name + '\'');
+        let err = new Error('Cannot find module \'' + name + '\'');
         err.code = 'MODULE_NOT_FOUND';
         throw err;
       }
@@ -42,7 +42,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
       localRequire.resolve = resolve;
       localRequire.cache = {};
 
-      var module = cache[name] = new newRequire.Module(name);
+      let module = cache[name] = new newRequire.Module(name);
 
       modules[name][0].call(module.exports, localRequire, module, module.exports, this);
     }
@@ -75,8 +75,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     }, {}];
   };
 
-  var error;
-  for (var i = 0; i < entry.length; i++) {
+  let error;
+  for (let i = 0; i < entry.length; i++) {
     try {
       newRequire(entry[i]);
     } catch (e) {
@@ -90,7 +90,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   if (entry.length) {
     // Expose entry point to Node, AMD or browser globals
     // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
-    var mainExports = newRequire(entry[entry.length - 1]);
+    let mainExports = newRequire(entry[entry.length - 1]);
 
     // CommonJS
     if (typeof exports === "object" && typeof module !== "undefined") {
@@ -118,7 +118,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+let bundleURL = null;
 
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -133,7 +133,7 @@ function getBundleURL() {
   try {
     throw new Error();
   } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    let matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
     if (matches) {
       return getBaseURL(matches[0]);
@@ -150,10 +150,10 @@ function getBaseURL(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 },{}],"node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
+let bundle = require('./bundle-url');
 
 function updateLink(link) {
-  var newLink = link.cloneNode();
+  let newLink = link.cloneNode();
 
   newLink.onload = function () {
     link.remove();
@@ -163,7 +163,7 @@ function updateLink(link) {
   link.parentNode.insertBefore(newLink, link.nextSibling);
 }
 
-var cssTimeout = null;
+let cssTimeout = null;
 
 function reloadCSS() {
   if (cssTimeout) {
@@ -171,9 +171,9 @@ function reloadCSS() {
   }
 
   cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    let links = document.querySelectorAll('link[rel="stylesheet"]');
 
-    for (var i = 0; i < links.length; i++) {
+    for (let i = 0; i < links.length; i++) {
       if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
         updateLink(links[i]);
       }
@@ -185,9 +185,9 @@ function reloadCSS() {
 
 module.exports = reloadCSS;
 },{"./bundle-url":"node_modules/parcel/src/builtins/bundle-url.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
-var global = arguments[3];
-var OVERLAY_ID = '__parcel__error__overlay__';
-var OldModule = module.bundle.Module;
+let global = arguments[3];
+let OVERLAY_ID = '__parcel__error__overlay__';
+let OldModule = module.bundle.Module;
 
 function Module(moduleName) {
   OldModule.call(this, moduleName);
@@ -206,24 +206,24 @@ function Module(moduleName) {
 }
 
 module.bundle.Module = Module;
-var checkedAssets, assetsToAccept;
-var parent = module.bundle.parent;
+let checkedAssets, assetsToAccept;
+let parent = module.bundle.parent;
 
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
-  var hostname = "" || location.hostname;
-  var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49820" + '/');
+  let hostname = "" || location.hostname;
+  let protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+  let ws = new WebSocket(protocol + '://' + hostname + ':' + "49820" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
-    var data = JSON.parse(event.data);
+    let data = JSON.parse(event.data);
 
     if (data.type === 'update') {
-      var handled = false;
+      let handled = false;
       data.assets.forEach(function (asset) {
         if (!asset.isNew) {
-          var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
+          let didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
 
           if (didAccept) {
             handled = true;
@@ -265,14 +265,14 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
     if (data.type === 'error') {
       console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
       removeErrorOverlay();
-      var overlay = createErrorOverlay(data);
+      let overlay = createErrorOverlay(data);
       document.body.appendChild(overlay);
     }
   };
 }
 
 function removeErrorOverlay() {
-  var overlay = document.getElementById(OVERLAY_ID);
+  let overlay = document.getElementById(OVERLAY_ID);
 
   if (overlay) {
     overlay.remove();
@@ -280,11 +280,11 @@ function removeErrorOverlay() {
 }
 
 function createErrorOverlay(data) {
-  var overlay = document.createElement('div');
+  let overlay = document.createElement('div');
   overlay.id = OVERLAY_ID; // html encode message and stack trace
 
-  var message = document.createElement('div');
-  var stackTrace = document.createElement('pre');
+  let message = document.createElement('div');
+  let stackTrace = document.createElement('pre');
   message.innerText = data.error.message;
   stackTrace.innerText = data.error.stack;
   overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
@@ -292,14 +292,14 @@ function createErrorOverlay(data) {
 }
 
 function getParents(bundle, id) {
-  var modules = bundle.modules;
+  let modules = bundle.modules;
 
   if (!modules) {
     return [];
   }
 
-  var parents = [];
-  var k, d, dep;
+  let parents = [];
+  let k, d, dep;
 
   for (k in modules) {
     for (d in modules[k][1]) {
@@ -319,14 +319,14 @@ function getParents(bundle, id) {
 }
 
 function hmrApply(bundle, asset) {
-  var modules = bundle.modules;
+  let modules = bundle.modules;
 
   if (!modules) {
     return;
   }
 
   if (modules[asset.id] || !bundle.parent) {
-    var fn = new Function('require', 'module', 'exports', asset.generated.js);
+    let fn = new Function('require', 'module', 'exports', asset.generated.js);
     asset.isNew = !modules[asset.id];
     modules[asset.id] = [fn, asset.deps];
   } else if (bundle.parent) {
@@ -335,7 +335,7 @@ function hmrApply(bundle, asset) {
 }
 
 function hmrAcceptCheck(bundle, id) {
-  var modules = bundle.modules;
+  let modules = bundle.modules;
 
   if (!modules) {
     return;
@@ -350,7 +350,7 @@ function hmrAcceptCheck(bundle, id) {
   }
 
   checkedAssets[id] = true;
-  var cached = bundle.cache[id];
+  let cached = bundle.cache[id];
   assetsToAccept.push([bundle, id]);
 
   if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
@@ -363,7 +363,7 @@ function hmrAcceptCheck(bundle, id) {
 }
 
 function hmrAcceptRun(bundle, id) {
-  var cached = bundle.cache[id];
+  let cached = bundle.cache[id];
   bundle.hotData = {};
 
   if (cached) {

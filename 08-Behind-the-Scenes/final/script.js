@@ -12,11 +12,11 @@ function calcAge(birthYear) {
     console.log(output);
 
     if (birthYear >= 1981 && birthYear <= 1996) {
-      var millenial = true;
-      // Creating NEW variable with same name as outer scope's variable
+      let millenial = true;
+      // Creating NEW letiable with same name as outer scope's letiable
       const firstName = 'Steven';
 
-      // Reasssigning outer scope's variable
+      // Reasssigning outer scope's letiable
       output = 'NEW OUTPUT!';
 
       const str = `Oh, and you're a millenial, ${firstName}`;
@@ -45,12 +45,12 @@ calcAge(1991);
 ///////////////////////////////////////
 // Hoisting and TDZ in Practice
 
-// Variables
+// letiables
 console.log(me);
 // console.log(job);
 // console.log(year);
 
-var me = 'Jonas';
+let me = 'Jonas';
 let job = 'teacher';
 const year = 1991;
 
@@ -68,19 +68,19 @@ const addExpr = function (a, b) {
   return a + b;
 };
 
-var addArrow = (a, b) => a + b;
+let addArrow = (a, b) => a + b;
 
 // Example
 console.log(undefined);
 if (!numProducts) deleteShoppingCart();
 
-var numProducts = 10;
+let numProducts = 10;
 
 function deleteShoppingCart() {
   console.log('All products deleted!');
 }
 
-var x = 1;
+let x = 1;
 let y = 2;
 const z = 3;
 
@@ -127,7 +127,7 @@ f();
 
 ///////////////////////////////////////
 // Regular Functions vs. Arrow Functions
-// var firstName = 'Matilda';
+// let firstName = 'Matilda';
 
 const jonas = {
   firstName: 'Jonas',
@@ -167,7 +167,7 @@ const addExpr = function (a, b) {
 addExpr(2, 5);
 addExpr(2, 5, 8, 12);
 
-var addArrow = (a, b) => {
+let addArrow = (a, b) => {
   console.log(arguments);
   return a + b;
 };

@@ -55,7 +55,7 @@ body {
   font-size: 1.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: let(--color-primary);
   margin-bottom: 1rem;
 }
 
@@ -67,7 +67,7 @@ body {
 
 .btn {
   display: inline-block;
-  background-color: var(--color-primary);
+  background-color: let(--color-primary);
   font-size: 1.6rem;
   font-family: inherit;
   font-weight: 500;
@@ -79,7 +79,7 @@ body {
 }
 
 .btn:hover {
-  background-color: var(--color-primary-darker);
+  background-color: let(--color-primary-darker);
 }
 
 .btn--text {
@@ -88,7 +88,7 @@ body {
   font-size: 1.7rem;
   font-family: inherit;
   font-weight: 500;
-  color: var(--color-primary);
+  color: let(--color-primary);
   border: none;
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
@@ -159,14 +159,14 @@ img {
 .nav__link--btn:visited {
   padding: 0.8rem 2.5rem;
   border-radius: 3rem;
-  background-color: var(--color-primary);
+  background-color: let(--color-primary);
   color: #222;
 }
 
 .nav__link--btn:hover,
 .nav__link--btn:active {
   color: inherit;
-  background-color: var(--color-primary-darker);
+  background-color: let(--color-primary-darker);
   color: #333;
 }
 
@@ -225,7 +225,7 @@ h4 {
   z-index: -1;
   opacity: 0.7;
   transform: scale(1.07, 1.05) skewX(-15deg);
-  background-image: var(--gradient-primary);
+  background-image: let(--gradient-primary);
 }
 
 /* FEATURES */
@@ -251,7 +251,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary-opacity);
+  background-color: let(--color-primary-opacity);
   height: 5.5rem;
   width: 5.5rem;
   border-radius: 50%;
@@ -261,7 +261,7 @@ h4 {
 .features__icon svg {
   height: 2.5rem;
   width: 2.5rem;
-  fill: var(--color-primary);
+  fill: let(--color-primary);
 }
 
 .features__header {
@@ -294,20 +294,20 @@ h4 {
 }
 
 .operations__tab--1 {
-  background-color: var(--color-secondary);
+  background-color: let(--color-secondary);
 }
 
 .operations__tab--1:hover {
-  background-color: var(--color-secondary-darker);
+  background-color: let(--color-secondary-darker);
 }
 
 .operations__tab--3 {
-  background-color: var(--color-tertiary);
+  background-color: let(--color-tertiary);
   margin: 0;
 }
 
 .operations__tab--3:hover {
-  background-color: var(--color-tertiary-darker);
+  background-color: let(--color-tertiary-darker);
 }
 
 .operations__tab--active {
@@ -354,22 +354,22 @@ h4 {
 }
 
 .operations__icon--1 {
-  background-color: var(--color-secondary-opacity);
+  background-color: let(--color-secondary-opacity);
 }
 .operations__icon--2 {
-  background-color: var(--color-primary-opacity);
+  background-color: let(--color-primary-opacity);
 }
 .operations__icon--3 {
-  background-color: var(--color-tertiary-opacity);
+  background-color: let(--color-tertiary-opacity);
 }
 .operations__icon--1 svg {
-  fill: var(--color-secondary-darker);
+  fill: let(--color-secondary-darker);
 }
 .operations__icon--2 svg {
-  fill: var(--color-primary);
+  fill: let(--color-primary);
 }
 .operations__icon--3 svg {
-  fill: var(--color-tertiary);
+  fill: let(--color-tertiary);
 }
 
 /* SLIDER */
@@ -477,7 +477,7 @@ h4 {
   line-height: 1;
   font-size: 20rem;
   font-family: inherit;
-  color: var(--color-primary);
+  color: let(--color-primary);
   z-index: -1;
 }
 

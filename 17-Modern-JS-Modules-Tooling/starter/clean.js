@@ -1,20 +1,20 @@
-var sc = [
+let sc = [
   { product: 'bread', quantity: 6 },
   { product: 'pizza', quantity: 2 },
   { product: 'milk', quantity: 4 },
   { product: 'water', quantity: 10 },
 ];
 
-var allow = {
+let allow = {
   lisbon: 5,
   others: 7,
 };
 
-var description = '';
+let description = '';
 
-var check = function (city) {
+let check = function (city) {
   if (sc.length > 0) {
-    var allowed;
+    let allowed;
     if (city == 'lisbon') {
       allowed = allow.lisbon;
     } else {
@@ -29,10 +29,10 @@ var check = function (city) {
 check('lisbon');
 console.log(sc);
 
-var createDescription = function () {
-  var first = sc[0];
-  var p = first.product;
-  var q = first.quantity;
+let createDescription = function () {
+  let first = sc[0];
+  let p = first.product;
+  let q = first.quantity;
 
   if (sc.length > 1) {
     description = 'Order with ' + q + ' ' + p + ', etc...';
